@@ -142,6 +142,14 @@ MIT License - see [LICENSE](LICENSE) file.
 
 ---
 
+# skills-manager
+
+> 别再手动切换每个项目的 skills 和 MCPs 了。让 skills-manager 把它们组织成分类，一键切换。
+
+一个管理 Claude Code skills、MCPs 和 plugins 的分类工具。定义一次，随处切换。
+
+---
+
 ## 安装
 
 ### 方法一：从 GitHub 克隆
