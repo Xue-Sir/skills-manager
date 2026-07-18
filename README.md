@@ -2,7 +2,23 @@
 
 [English](#installation) | [中文](#安装)
 
-Claude Code skill for managing skills, MCPs, and plugins by categories. Switch modes to configure project tools per project.
+> Stop manually switching skills and MCPs per project. Let skills-manager organize them into categories and switch with one command.
+
+A Claude Code skill that manages your skills, MCPs, and plugins by categories. Define once, switch anywhere.
+
+---
+
+## Why skills-manager?
+
+**The problem:** You have multiple skills, MCPs, and plugins. Different projects need different tools. Managing them manually is tedious and error-prone.
+
+**The solution:** Organize tools into categories (modes). Switch to a category, and only those tools are active for your current project.
+
+```
+/skills-manager switch research    # Only research tools active
+/skills-manager switch coding      # Only coding tools active
+/skills-manager switch All         # Everything on
+```
 
 ---
 
@@ -30,19 +46,15 @@ After installation, start Claude Code and run:
 /skills-manager scan
 ```
 
-This will:
-- Scan your existing skills, MCPs, and plugins
-- Register them in skills-manager
-- Migrate any MCPs from global `~/.claude.json` to skills-manager (with backup)
+This scans your existing tools, registers them, and migrates any global MCPs (with automatic backup).
 
-### 2. Basic Commands
+### 2. Try It
 
-| Command | Description |
-|---------|-------------|
-| `/skills-manager scan` | Scan and sync all tools |
-| `/skills-manager list` | List all categories |
-| `/skills-manager switch All` | Enable all tools |
-| `/skills-manager switch None` | Disable all tools |
+```
+/skills-manager list              # See all categories
+/skills-manager switch All        # Enable everything
+/skills-manager switch None       # Disable everything
+```
 
 ### 3. Create Your Own Category
 
@@ -63,121 +75,64 @@ Or in English:
 
 ---
 
-## Important Notes
+## Key Features
 
-### ⚠️ MCP Migration
-
-When you run `scan`, skills-manager will:
-1. Detect any MCPs in your global `~/.claude.json`
-2. Move them to skills-manager's config
-3. Clear the global `mcpServers` to `{}`
-
-**Why?** Any MCP in `~/.claude.json` is a "global leak" — it's available to EVERY project, bypassing skills-manager's per-project control.
-
-**Backup:** Before modifying `~/.claude.json`, a backup is created in `backups/` directory.
-
-### 📁 Files Read by skills-manager
-
-| File | Purpose |
-|------|---------|
-| `~/.claude/skills/` | List of installed skills |
-| `~/.claude/plugins/installed_plugins.json` | List of installed plugins |
-| `~/.claude.json` → `mcpServers` | Global MCP configurations |
-| `<project>/.claude/settings.local.json` | Project-level skill/plugin switches |
-| `<project>/.mcp.json` | Project-level MCP configurations |
-
-### 🔧 Configuration Files
-
-All config files are in `config/` directory:
-- `settings.json` — skills-manager settings
-- `categories.json` — category definitions
-- `skills-registry.json` — skill registry
-- `mcp-config.json` — MCP configurations
-- `plugins-registry.json` — plugin registry
-- `bindings.json` — skill→MCP/plugin bindings
-
-**Note:** Config files are managed by AI based on your environment. You can also edit them manually.
+- **Category-based management** — Group tools by project type, workflow, or any criteria
+- **One-command switch** — Change your entire tool set instantly
+- **Auto scan & sync** — Detects new tools automatically
+- **MCP migration** — Moves global MCPs to per-project control (with backup)
+- **Natural language** — Use Chinese or English, whatever feels natural
+- **Safe by design** — Always backs up before modifying, never overwrites
 
 ---
 
-## Detailed Usage
-
-### Category Management
+## Commands
 
 | Command | Description |
 |---------|-------------|
-| `/skills-manager add-category <name>` | Create a new category |
-| `/skills-manager delete-category <name>` | Delete a category |
-| `/skills-manager edit-category <name>` | Edit category contents |
+| `/skills-manager scan` | Scan and sync all tools |
+| `/skills-manager list` | List all categories |
+| `/skills-manager switch <category>` | Switch to a category |
+| `/skills-manager add-category <name>` | Create new category |
+| `/skills-manager delete-category <name>` | Delete category |
 | `/skills-manager 把 <item> 加入 <category>` | Add item to category |
-| `/skills-manager 把 <item> 从 <category> 去掉` | Remove item from category |
-
-### Tool Type Toggle
-
-Each tool type can be toggled independently:
-```
-/skills-manager manage skills off    # Disable skill management
-/skills-manager manage mcp on        # Enable MCP management
-/skills-manager manage plugins off   # Disable plugin management
-```
-
-When disabled, skills-manager ignores that type completely.
-
-### Backup Management
-
-```
-/skills-manager backup list          # List backups
-/skills-manager backup clean         # Clean old backups
-/skills-manager 设置备份保留天数为 60  # Set retention days
-```
-
-### Natural Language Support
-
-You can use natural language (Chinese or English):
-- "切换到research模式" / "switch to research mode"
-- "把skill-a加入research" / "add skill-a to research"
-- "列出所有分类" / "list all categories"
-- "分析这个项目应该用什么分类" / "analyze this project and recommend category"
+| `/skills-manager manage <type> on/off` | Toggle tool type |
+| `/skills-manager backup list` | List backups |
 
 ---
 
-## How It Works
+## Natural Language
 
-### Architecture
+You can use natural language (Chinese or English):
 
-```
-~/.claude/skills/skills-manager/
-├── SKILL.md                ← Skill entry point
-├── README.md               ← This file
-├── scripts/
-│   └── scan.py             ← Scan and sync script
-├── config/                 ← Configuration files
-│   ├── settings.json
-│   ├── categories.json
-│   ├── skills-registry.json
-│   ├── mcp-config.json
-│   ├── plugins-registry.json
-│   └── bindings.json
-├── references/             ← Detailed documentation
-│   ├── config-formats.md
-│   ├── sync-check.md
-│   └── operations.md
-└── backups/                ← Automatic backups
-```
+| Say this | Do this |
+|----------|---------|
+| "切换到research模式" / "switch to research" | Switch category |
+| "把skill-a加入research" / "add skill-a to research" | Add to category |
+| "列出所有分类" / "list categories" | Show categories |
+| "分析这个项目" / "analyze this project" | Get recommendation |
 
-### Workflow
+---
 
-1. **Scan**: Detect all installed skills, MCPs, plugins
-2. **Sync**: Register new tools, update All category
-3. **Migrate**: Move global MCPs to skills-manager (with backup)
-4. **Switch**: Apply category to current project
+## Important Notes
 
-### Safety
+### MCP Migration
 
-- Only modifies `skillOverrides` and `enabledPlugins` in settings.local.json
-- Only modifies `mcpServers` in ~/.claude.json
-- Always backs up before modifying ~/.claude.json
-- Never overwrites existing files (read → modify → write)
+When you run `scan`, any MCPs in your global `~/.claude.json` are moved to skills-manager. This prevents "global leaks" where an MCP is available to ALL projects regardless of category.
+
+A backup is always created before modifying `~/.claude.json`.
+
+### Files Read
+
+| File | Purpose |
+|------|---------|
+| `~/.claude/skills/` | Installed skills |
+| `~/.claude/plugins/installed_plugins.json` | Installed plugins |
+| `~/.claude.json` → `mcpServers` | Global MCP configs |
+
+### Configuration
+
+Config files are in `config/` directory. They're managed by AI based on your environment, but you can edit them manually too.
 
 ---
 
@@ -211,19 +166,15 @@ git clone https://github.com/Xue-Sir/skills-manager.git ~/.claude/skills/skills-
 /skills-manager scan
 ```
 
-这将：
-- 扫描你现有的 skills、MCPs 和 plugins
-- 将它们注册到 skills-manager
-- 迁移全局 `~/.claude.json` 中的 MCPs 到 skills-manager（自动备份）
+这会扫描你现有的工具，注册它们，并迁移全局 MCPs（自动备份）。
 
-### 2. 基本命令
+### 2. 试试看
 
-| 命令 | 说明 |
-|------|------|
-| `/skills-manager scan` | 扫描并同步所有工具 |
-| `/skills-manager list` | 列出所有分类 |
-| `/skills-manager switch All` | 开启所有工具 |
-| `/skills-manager switch None` | 关闭所有工具 |
+```
+/skills-manager list              # 查看所有分类
+/skills-manager switch All        # 开启所有工具
+/skills-manager switch None       # 关闭所有工具
+```
 
 ### 3. 创建自己的分类
 
@@ -236,121 +187,78 @@ git clone https://github.com/Xue-Sir/skills-manager.git ~/.claude/skills/skills-
 
 ---
 
-## 重要说明
+## 为什么用 skills-manager？
 
-### ⚠️ MCP 迁移
+**问题：** 你有多个 skills、MCPs、plugins。不同项目需要不同工具。手动管理很麻烦。
 
-运行 `scan` 时，skills-manager 会：
-1. 检测全局 `~/.claude.json` 中的 MCPs
-2. 将它们移到 skills-manager 的配置中
-3. 清空全局 `mcpServers` 为 `{}`
+**解决：** 把工具组织成分类（模式）。切换到一个分类，只有那些工具在当前项目中激活。
 
-**为什么？** 任何留在 `~/.claude.json` 中的 MCP 都是"全局泄漏"——它对所有项目可用，绕过了 skills-manager 的项目级控制。
-
-**备份：** 修改 `~/.claude.json` 前，会自动备份到 `backups/` 目录。
-
-### 📁 skills-manager 读取的文件
-
-| 文件 | 用途 |
-|------|------|
-| `~/.claude/skills/` | 已安装的 skills 列表 |
-| `~/.claude/plugins/installed_plugins.json` | 已安装的 plugins 列表 |
-| `~/.claude.json` → `mcpServers` | 全局 MCP 配置 |
-| `<项目>/.claude/settings.local.json` | 项目级 skill/plugin 开关 |
-| `<项目>/.mcp.json` | 项目级 MCP 配置 |
-
-### 🔧 配置文件
-
-所有配置文件在 `config/` 目录下：
-- `settings.json` — skills-manager 设置
-- `categories.json` — 分类定义
-- `skills-registry.json` — Skill 注册表
-- `mcp-config.json` — MCP 配置
-- `plugins-registry.json` — Plugin 注册表
-- `bindings.json` — skill→MCP/plugin 绑定
-
-**注意：** 配置文件由 AI 根据你的环境自动管理，你也可以手动编辑。
+```
+/skills-manager switch research    # 只有研究工具
+/skills-manager switch coding      # 只有编程工具
+/skills-manager switch All         # 全部开启
+```
 
 ---
 
-## 详细用法
+## 核心功能
 
-### 分类管理
+- **分类管理** — 按项目类型、工作流或任何标准分组工具
+- **一键切换** — 立即切换整套工具
+- **自动扫描同步** — 自动检测新工具
+- **MCP 迁移** — 将全局 MCPs 移到项目级控制（自动备份）
+- **自然语言** — 中英文都行，怎么顺口怎么说
+- **安全设计** — 修改前总是备份，从不覆盖
+
+---
+
+## 命令
 
 | 命令 | 说明 |
 |------|------|
+| `/skills-manager scan` | 扫描并同步所有工具 |
+| `/skills-manager list` | 列出所有分类 |
+| `/skills-manager switch <分类>` | 切换到指定分类 |
 | `/skills-manager add-category <名称>` | 创建新分类 |
 | `/skills-manager delete-category <名称>` | 删除分类 |
-| `/skills-manager edit-category <名称>` | 编辑分类内容 |
 | `/skills-manager 把 <项目> 加入 <分类>` | 将项目加入分类 |
-| `/skills-manager 把 <项目> 从 <分类> 去掉` | 将项目从分类移除 |
-
-### 工具类型开关
-
-每种工具类型可独立开关：
-```
-/skills-manager manage skills off    # 关闭 skill 管理
-/skills-manager manage mcp on        # 开启 MCP 管理
-/skills-manager manage plugins off   # 关闭 plugin 管理
-```
-
-关闭后，skills-manager 完全忽略该类型。
-
-### 备份管理
-
-```
-/skills-manager backup list          # 列出备份
-/skills-manager backup clean         # 清理旧备份
-/skills-manager 设置备份保留天数为 60  # 设置保留天数
-```
-
-### 自然语言支持
-
-你可以使用自然语言（中文或英文）：
-- "切换到research模式" / "switch to research mode"
-- "把skill-a加入research" / "add skill-a to research"
-- "列出所有分类" / "list all categories"
-- "分析这个项目应该用什么分类" / "analyze this project and recommend category"
+| `/skills-manager manage <类型> on/off` | 切换工具类型 |
+| `/skills-manager backup list` | 列出备份 |
 
 ---
 
-## 工作原理
+## 自然语言
 
-### 架构
+你可以用自然语言（中文或英文）：
 
-```
-~/.claude/skills/skills-manager/
-├── SKILL.md                ← Skill 入口
-├── README.md               ← 本文件
-├── scripts/
-│   └── scan.py             ← 扫描和同步脚本
-├── config/                 ← 配置文件
-│   ├── settings.json
-│   ├── categories.json
-│   ├── skills-registry.json
-│   ├── mcp-config.json
-│   ├── plugins-registry.json
-│   └── bindings.json
-├── references/             ← 详细文档
-│   ├── config-formats.md
-│   ├── sync-check.md
-│   └── operations.md
-└── backups/                ← 自动备份
-```
+| 这样说 | 这样做 |
+|--------|--------|
+| "切换到research模式" / "switch to research" | 切换分类 |
+| "把skill-a加入research" / "add skill-a to research" | 加入分类 |
+| "列出所有分类" / "list categories" | 显示分类 |
+| "分析这个项目" / "analyze this project" | 获取推荐 |
 
-### 工作流程
+---
 
-1. **扫描**：检测所有已安装的 skills、MCPs、plugins
-2. **同步**：注册新工具，更新 All 分类
-3. **迁移**：将全局 MCPs 移到 skills-manager（自动备份）
-4. **切换**：将分类应用到当前项目
+## 重要说明
 
-### 安全性
+### MCP 迁移
 
-- 只修改 settings.local.json 中的 `skillOverrides` 和 `enabledPlugins`
-- 只修改 ~/.claude.json 中的 `mcpServers`
-- 修改 ~/.claude.json 前总是备份
-- 从不覆盖现有文件（读取→修改→写入）
+运行 `scan` 时，全局 `~/.claude.json` 中的 MCPs 会被移到 skills-manager。这防止了"全局泄漏"——MCP 对所有项目可用，不管分类是什么。
+
+修改 `~/.claude.json` 前总是会创建备份。
+
+### 读取的文件
+
+| 文件 | 用途 |
+|------|------|
+| `~/.claude/skills/` | 已安装的 skills |
+| `~/.claude/plugins/installed_plugins.json` | 已安装的 plugins |
+| `~/.claude.json` → `mcpServers` | 全局 MCP 配置 |
+
+### 配置
+
+配置文件在 `config/` 目录下。由 AI 根据你的环境管理，你也可以手动编辑。
 
 ---
 
