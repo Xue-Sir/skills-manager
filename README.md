@@ -37,6 +37,16 @@ git clone https://github.com/Xue-Sir/skills-manager.git ~/.claude/skills/skills-
 
 ---
 
+## Requirements
+
+- **Python 3.6+** (uses only standard library, no extra packages)
+- **Claude Code** installed
+- **Windows 10/11, Linux, macOS** — all supported
+
+The `scan.py` script uses only Python standard library modules (json, os, sys, shutil, pathlib, subprocess). No `pip install` needed.
+
+---
+
 ## Quick Start
 
 ### 1. First Use
@@ -162,6 +172,16 @@ git clone https://github.com/Xue-Sir/skills-manager.git ~/.claude/skills/skills-
 
 1. 下载仓库 ZIP 文件
 2. 解压到 `~/.claude/skills/skills-manager/`
+
+---
+
+## 环境要求
+
+- **Python 3.6+**（仅使用标准库，无需额外安装包）
+- **Claude Code** 已安装
+- **Windows 10/11、Linux、macOS** — 全部支持
+
+`scan.py` 脚本仅使用 Python 标准库模块（json、os、sys、shutil、pathlib、subprocess）。无需 `pip install`。
 
 ---
 
