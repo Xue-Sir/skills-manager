@@ -11,7 +11,7 @@ Claude Code skill for managing skills, MCPs, and plugins by categories. Switch m
 ### Method 1: Clone from GitHub
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/skills-manager.git ~/.claude/skills/skills-manager
+git clone https://github.com/Xue-Sir/skills-manager.git ~/.claude/skills/skills-manager
 ```
 
 ### Method 2: Manual Download
@@ -192,7 +192,7 @@ MIT License - see [LICENSE](LICENSE) file.
 ### 方法一：从 GitHub 克隆
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/skills-manager.git ~/.claude/skills/skills-manager
+git clone https://github.com/Xue-Sir/skills-manager.git ~/.claude/skills/skills-manager
 ```
 
 ### 方法二：手动下载
