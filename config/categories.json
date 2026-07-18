@@ -1,0 +1,17 @@
+{
+  "categories": {
+    "All": {
+      "description": "所有都开启 / All enabled",
+      "skills": [],
+      "mcps": [],
+      "plugins": []
+    },
+    "None": {
+      "description": "所有都关闭 / All disabled",
+      "skills": [],
+      "mcps": [],
+      "plugins": []
+    }
+  },
+  "default_category": "None"
+}

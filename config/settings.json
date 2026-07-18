@@ -1,0 +1,6 @@
+{
+  "manage_skills": true,
+  "manage_mcps": true,
+  "manage_plugins": true,
+  "backup_retention_days": 30
+}
