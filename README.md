@@ -1,5 +1,10 @@
 # skills-manager
 
+[![GitHub stars](https://img.shields.io/github/stars/Xue-Sir/skills-manager?style=social)](https://github.com/Xue-Sir/skills-manager/stargazers)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.6+](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/downloads/)
+[![Claude Code](https://img.shields.io/badge/Claude-Code-purple.svg)](https://claude.ai/code)
+
 [English](#installation) | [中文](#安装)
 
 > Stop manually switching skills and MCPs per project. Let skills-manager organize them into categories and switch with one command.
@@ -169,6 +174,12 @@ MIT License - see [LICENSE](LICENSE) file.
 
 ---
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Xue-Sir/skills-manager&type=Date)](https://star-history.com/#Xue-Sir/skills-manager&Date)
+
+---
+
 # skills-manager
 
 > 别再手动切换每个项目的 skills 和 MCPs 了。让 skills-manager 把它们组织成分类，一键切换。
@@ -327,3 +338,9 @@ git clone https://github.com/Xue-Sir/skills-manager.git ~/.claude/skills/skills-
 ## 许可证
 
 MIT 许可证 - 见 [LICENSE](LICENSE) 文件。
+
+---
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Xue-Sir/skills-manager&type=Date)](https://star-history.com/#Xue-Sir/skills-manager&Date)
