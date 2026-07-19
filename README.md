@@ -8,7 +8,7 @@ A [Claude Code](https://claude.ai/code) skill that manages your skills, MCPs, an
 
 **⚠️ For Claude Code users only.** This skill relies on Claude Code's directory structure (`~/.claude/skills/`, `skillOverrides`, `enabledPlugins`, etc.) and will not work with other AI coding tools.
 
-Works with all Claude Code variants: CLI, Desktop (Mac/Windows), Web (claude.ai/code), and IDE extensions (VS Code, JetBrains).
+> Tested on Claude Code CLI. Should work with Desktop/Web/IDE versions since they share the same directory structure, but not yet verified.
 
 ---
 
@@ -164,7 +164,7 @@ MIT License - see [LICENSE](LICENSE) file.
 
 **⚠️ 仅适用于 Claude Code 用户。** 此 skill 依赖 Claude Code 的目录结构（`~/.claude/skills/`、`skillOverrides`、`enabledPlugins` 等），不支持其他 AI 编程工具。
 
-适用于所有 Claude Code 形式：CLI、桌面端（Mac/Windows）、Web（claude.ai/code）、IDE 扩展（VS Code、JetBrains）。
+> 已在 Claude Code CLI 上测试。理论上适用于桌面端/Web/IDE版本（共享相同目录结构），但尚未验证。
 
 ---
 
