@@ -19,7 +19,7 @@ A [Claude Code](https://claude.ai/code) skill that manages your skills, MCPs, an
 
 ## Why skills-manager?
 
-**The problem:** You have multiple skills, MCPs, and plugins. Different projects need different tools. Managing them manually is tedious and error-prone.
+**The problem:** You have multiple skills, MCPs, and plugins. Different projects need different tools. Managing them manually is tedious and error-prone. Worse, MCPs in `~/.claude.json` are "global leaks" — they're active in ALL projects, no way to control per-project.
 
 **The solution:** Organize tools into categories (modes). Switch to a category, and only those tools are active for your current project.
 
@@ -28,6 +28,20 @@ A [Claude Code](https://claude.ai/code) skill that manages your skills, MCPs, an
 /skills-manager switch coding      # Only coding tools active
 /skills-manager switch All         # Everything on
 ```
+
+### Why install at user level?
+
+Skills and plugins are installed at user level (`~/.claude/skills/`, `~/.claude/plugins/`), not per project. This avoids duplicating tools across projects — one installation, shared everywhere.
+
+### How switching works
+
+When you switch categories, skills-manager writes project-level config files:
+
+- **`.mcp.json`** — MCP configs for this category
+- **`settings.local.json`** — skill and plugin on/off states
+- **`skills-manager-state.json`** — records current category, enabled tools, timestamp
+
+Each project stays independent — no interference between projects.
 
 ### What makes it different?
 
@@ -190,7 +204,7 @@ MIT License - see [LICENSE](LICENSE) file.
 
 ## 为什么用 skills-manager？
 
-**问题：** 你有多个 skills、MCPs、plugins。不同项目需要不同工具。手动管理很麻烦。
+**问题：** 你有多个 skills、MCPs、plugins。不同项目需要不同工具。手动管理很麻烦。更糟的是，`~/.claude.json` 中的 MCP 存在「全局泄漏」——对所有项目生效，无法按项目控制。
 
 **解决：** 把工具组织成分类（模式）。切换到一个分类，只有那些工具在当前项目中激活。
 
@@ -199,6 +213,20 @@ MIT License - see [LICENSE](LICENSE) file.
 /skills-manager switch coding      # 只有编程工具
 /skills-manager switch All         # 全部开启
 ```
+
+### 为什么装在用户级？
+
+Skills 和 plugins 安装在用户级（`~/.claude/skills/`、`~/.claude/plugins/`），而不是项目级。这样避免了在每个项目中重复安装同一份工具——一次安装，所有项目共享。
+
+### 切换分类的实现方式
+
+切换分类时，skills-manager 在项目中写入三个配置文件：
+
+- **`.mcp.json`** — 当前分类需要的 MCP 配置
+- **`settings.local.json`** — skill 和 plugin 的 on/off 状态
+- **`skills-manager-state.json`** — 记录当前分类名称、启用的功能列表、时间戳
+
+每个项目互不干扰。
 
 ### 有什么不同？
 
