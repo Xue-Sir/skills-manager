@@ -4,7 +4,9 @@
 
 > Stop manually switching skills and MCPs per project. Let skills-manager organize them into categories and switch with one command.
 
-A Claude Code skill that manages your skills, MCPs, and plugins by categories. Define once, switch anywhere.
+A [Claude Code](https://claude.ai/code) skill that manages your skills, MCPs, and plugins by categories. Define once, switch anywhere.
+
+**⚠️ For Claude Code users only.** This skill relies on Claude Code's directory structure (`~/.claude/skills/`, `skillOverrides`, `enabledPlugins`, etc.) and will not work with other AI coding tools.
 
 ---
 
@@ -156,7 +158,9 @@ MIT License - see [LICENSE](LICENSE) file.
 
 > 别再手动切换每个项目的 skills 和 MCPs 了。让 skills-manager 把它们组织成分类，一键切换。
 
-一个管理 Claude Code skills、MCPs 和 plugins 的分类工具。定义一次，随处切换。
+一个 [Claude Code](https://claude.ai/code) 的 skill，用于管理 skills、MCPs 和 plugins 的分类。定义一次，随处切换。
+
+**⚠️ 仅适用于 Claude Code 用户。** 此 skill 依赖 Claude Code 的目录结构（`~/.claude/skills/`、`skillOverrides`、`enabledPlugins` 等），不支持其他 AI 编程工具。
 
 ---
 
