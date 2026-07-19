@@ -174,10 +174,6 @@ MIT License - see [LICENSE](LICENSE) file.
 
 ---
 
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=Xue-Sir/skills-manager&type=Date)](https://star-history.com/#Xue-Sir/skills-manager&Date)
-
 ---
 
 # skills-manager
@@ -338,9 +334,3 @@ git clone https://github.com/Xue-Sir/skills-manager.git ~/.claude/skills/skills-
 ## 许可证
 
 MIT 许可证 - 见 [LICENSE](LICENSE) 文件。
-
----
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=Xue-Sir/skills-manager&type=Date)](https://star-history.com/#Xue-Sir/skills-manager&Date)
