@@ -24,6 +24,18 @@ A [Claude Code](https://claude.ai/code) skill that manages your skills, MCPs, an
 /skills-manager switch All         # Everything on
 ```
 
+### What makes it different?
+
+| Feature | skills-manager | Desktop apps | Other skills |
+|---------|---------------|--------------|--------------|
+| **Runs inside Claude Code** | ✅ Native skill | ❌ Separate app | ✅ |
+| **No installation needed** | ✅ Just clone | ❌ Need to install | ✅ |
+| **Natural language** | ✅ Chinese + English | ❌ GUI only | ⚠️ English only |
+| **Auto MCP migration** | ✅ Fixes global leaks | ❌ Manual | ❌ |
+| **Skill-MCP binding** | ✅ Auto-associate | ❌ Manual | ❌ |
+| **Safe backup** | ✅ Always backup | ⚠️ Varies | ❌ |
+| **Lightweight** | ✅ Pure CLI | ❌ Heavy | ✅ |
+
 ---
 
 ## Installation
@@ -95,6 +107,7 @@ Or in English:
 - **One-command switch** — Change your entire tool set instantly
 - **Auto scan & sync** — Detects new tools automatically
 - **MCP migration** — Moves global MCPs to per-project control (with backup)
+- **Skill-MCP binding** — Associate skills with their required MCPs/plugins
 - **Natural language** — Use Chinese or English, whatever feels natural
 - **Safe by design** — Always backs up before modifying, never overwrites
 
@@ -168,6 +181,32 @@ MIT License - see [LICENSE](LICENSE) file.
 
 ---
 
+## 为什么用 skills-manager？
+
+**问题：** 你有多个 skills、MCPs、plugins。不同项目需要不同工具。手动管理很麻烦。
+
+**解决：** 把工具组织成分类（模式）。切换到一个分类，只有那些工具在当前项目中激活。
+
+```
+/skills-manager switch research    # 只有研究工具
+/skills-manager switch coding      # 只有编程工具
+/skills-manager switch All         # 全部开启
+```
+
+### 有什么不同？
+
+| 特性 | skills-manager | 桌面应用 | 其他 skills |
+|------|---------------|----------|-------------|
+| **在 Claude Code 中运行** | ✅ 原生 skill | ❌ 需要单独应用 | ✅ |
+| **无需安装** | ✅ 只需克隆 | ❌ 需要安装 | ✅ |
+| **自然语言** | ✅ 中英文 | ❌ 只有 GUI | ⚠️ 仅英文 |
+| **自动 MCP 迁移** | ✅ 解决全局泄漏 | ❌ 手动 | ❌ |
+| **Skill-MCP 绑定** | ✅ 自动关联 | ❌ 手动 | ❌ |
+| **安全备份** | ✅ 总是备份 | ⚠️ 不一定 | ❌ |
+| **轻量级** | ✅ 纯 CLI | ❌ 笨重 | ✅ |
+
+---
+
 ## 安装
 
 ### 方法一：从 GitHub 克隆
@@ -223,26 +262,13 @@ git clone https://github.com/Xue-Sir/skills-manager.git ~/.claude/skills/skills-
 
 ---
 
-## 为什么用 skills-manager？
-
-**问题：** 你有多个 skills、MCPs、plugins。不同项目需要不同工具。手动管理很麻烦。
-
-**解决：** 把工具组织成分类（模式）。切换到一个分类，只有那些工具在当前项目中激活。
-
-```
-/skills-manager switch research    # 只有研究工具
-/skills-manager switch coding      # 只有编程工具
-/skills-manager switch All         # 全部开启
-```
-
----
-
 ## 核心功能
 
 - **分类管理** — 按项目类型、工作流或任何标准分组工具
 - **一键切换** — 立即切换整套工具
 - **自动扫描同步** — 自动检测新工具
 - **MCP 迁移** — 将全局 MCPs 移到项目级控制（自动备份）
+- **Skill-MCP 绑定** — 自动关联 skill和对应的 MCP/plugin
 - **自然语言** — 中英文都行，怎么顺口怎么说
 - **安全设计** — 修改前总是备份，从不覆盖
 
